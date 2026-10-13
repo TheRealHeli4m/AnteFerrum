@@ -1,0 +1,13 @@
+{
+  "itemGroup.anteferrum": "Example Mod Tab",
+  "block.anteferrum.example_block": "Example Block",
+  "item.anteferrum.example_item": "Example Item",
+
+  "anteferrum.configuration.title": "AnteFerrum Configs",
+  "anteferrum.configuration.section.anteferrum.common.toml": "AnteFerrum Configs",
+  "anteferrum.configuration.section.anteferrum.common.toml.title": "AnteFerrum Configs",
+  "anteferrum.configuration.items": "Item List",
+  "anteferrum.configuration.logDirtBlock": "Log Dirt Block",
+  "anteferrum.configuration.magicNumberIntroduction": "Magic Number Text",
+  "anteferrum.configuration.magicNumber": "Magic Number"
+}
