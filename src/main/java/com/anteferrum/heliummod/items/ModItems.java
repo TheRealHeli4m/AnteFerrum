@@ -12,11 +12,8 @@ public class ModItems {
             props -> props
     );
 
-    public static final DeferredItem<Item> flint = AnteFerrum.ITEMS.registerItem(
-            "flint",
-            Item::new,
-            props -> props
-    );
+    public static final DeferredItem<Item> flint = AnteFerrum.ITEMS.registerItem("flint", Item::new, props -> props);
+    public static final DeferredItem<Item> pebble = AnteFerrum.ITEMS.registerItem("pebble", Item::new, props -> props);
 
     // empty function to register this class -> allowing for items to be added
     public static void register(IEventBus eventBus) { }

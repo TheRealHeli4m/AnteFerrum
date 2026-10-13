@@ -1,6 +1,9 @@
 package com.anteferrum.heliummod;
 
 import com.anteferrum.heliummod.items.ModItems;
+import com.anteferrum.heliummod.loot.AddItemModifier;
+import com.anteferrum.heliummod.loot.ModLootModifiers;
+import com.anteferrum.heliummod.loot.RemoveItemModifier;
 import com.mojang.serialization.MapCodec;
 import net.neoforged.neoforge.common.loot.IGlobalLootModifier;
 import net.neoforged.neoforge.registries.*;
@@ -54,6 +57,15 @@ public class AnteFerrum {
                 output.accept(EXAMPLE_ITEM.get());// Add the example item to the tab. For your own tabs, this method is preferred over the event
             }).build());
 
+    public static final DeferredRegister<MapCodec<? extends IGlobalLootModifier>> GLOBAL_LOOT_MODIFIER_SERIALIZERS =
+            DeferredRegister.create(NeoForgeRegistries.Keys.GLOBAL_LOOT_MODIFIER_SERIALIZERS, AnteFerrum.MODID);
+
+    public static final Supplier<MapCodec<AddItemModifier>> ADD_ITEM_MODIFIER =
+            GLOBAL_LOOT_MODIFIER_SERIALIZERS.register("add_item_modifier", () -> AddItemModifier.CODEC);
+
+    public static final Supplier<MapCodec<RemoveItemModifier>> REMOVE_ITEM_MODIFIER =
+            GLOBAL_LOOT_MODIFIER_SERIALIZERS.register("remove_item_modifier", () -> RemoveItemModifier.CODEC);
+
     // The constructor for the mod class is the first code that is run when your mod is loaded.
     // FML will recognize some parameter types like IEventBus or ModContainer and pass them in automatically.
     public AnteFerrum(IEventBus modEventBus, ModContainer modContainer) {
@@ -61,11 +73,9 @@ public class AnteFerrum {
         modEventBus.addListener(this::commonSetup);
 
         ModItems.register(modEventBus);
-        // Register the Deferred Register to the mod event bus so blocks get registered
+        GLOBAL_LOOT_MODIFIER_SERIALIZERS.register(modEventBus);
         BLOCKS.register(modEventBus);
-        // Register the Deferred Register to the mod event bus so items get registered
         ITEMS.register(modEventBus);
-        // Register the Deferred Register to the mod event bus so tabs get registered
         CREATIVE_MODE_TABS.register(modEventBus);
         // Register ourselves for server and other game events we are interested in.
         // Note that this is necessary if and only if we want *this* class (AnteFerrum) to respond directly to events.

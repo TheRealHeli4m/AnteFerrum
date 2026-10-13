@@ -1,0 +1,10 @@
+{
+  "type": "anteferrum:remove_item_modifier",
+  "conditions": [
+    {
+      "block": "minecraft:gravel",
+      "condition": "minecraft:block_state_property"
+    }
+  ],
+  "item": "minecraft:gravel"
+}
