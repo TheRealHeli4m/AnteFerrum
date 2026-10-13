@@ -9,5 +9,8 @@
   "anteferrum.configuration.items": "Item List",
   "anteferrum.configuration.logDirtBlock": "Log Dirt Block",
   "anteferrum.configuration.magicNumberIntroduction": "Magic Number Text",
-  "anteferrum.configuration.magicNumber": "Magic Number"
+  "anteferrum.configuration.magicNumber": "Magic Number",
+
+  "item.anteferrum.sharpened_flint": "Sharpened Flint",
+  "item.anteferrum.flint": "Flint"
 }
