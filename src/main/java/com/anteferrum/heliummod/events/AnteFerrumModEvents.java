@@ -1,24 +1,20 @@
-package com.anteferrum.heliummod;
+package com.anteferrum.heliummod.events;
 
+import com.anteferrum.heliummod.AnteFerrumRecipeProvider;
 import com.anteferrum.heliummod.loot.ModGlobalLootModifierProvider;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.data.DataGenerator;
-import net.minecraft.data.PackOutput;
-import net.minecraft.data.loot.LootTableProvider;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
+import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 
-import java.util.List;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-
+// mod event bus
 // super important that you actually spend time to setup event handler properly
-public class AnteFerrumEvents {
+public class AnteFerrumModEvents {
     @SubscribeEvent
     public static void gatherData(GatherDataEvent.Client event) {
         event.createProvider(AnteFerrumRecipeProvider.Runner::new);
         event.createProvider(ModGlobalLootModifierProvider::new);
     }
+
+    public static void register(IEventBus bus) { };
 }
 

@@ -8,12 +8,7 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
 
 public class ModItems {
-    public static final DeferredItem<Item> sharpened_flint = AnteFerrum.ITEMS.registerItem(
-            "sharpened_flint",
-            Item::new,
-            props -> props
-    );
-
+    public static final DeferredItem<BlockItem> sharpened_flint = AnteFerrum.ITEMS.registerSimpleBlockItem("sharpened_flint", ModBlocks.sharpened_flint, props -> props);
     public static final DeferredItem<BlockItem> flint = AnteFerrum.ITEMS.registerSimpleBlockItem("flint", ModBlocks.flint, props -> props);
     public static final DeferredItem<Item> pebble = AnteFerrum.ITEMS.registerItem("pebble", Item::new, props -> props);
 

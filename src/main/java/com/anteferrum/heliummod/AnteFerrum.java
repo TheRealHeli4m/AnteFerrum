@@ -1,6 +1,8 @@
 package com.anteferrum.heliummod;
 
 import com.anteferrum.heliummod.blocks.ModBlocks;
+import com.anteferrum.heliummod.events.AnteFerrumGameEvents;
+import com.anteferrum.heliummod.events.AnteFerrumModEvents;
 import com.anteferrum.heliummod.items.ModItems;
 import com.anteferrum.heliummod.loot.AddItemModifier;
 import com.anteferrum.heliummod.loot.ModLootModifiers;
@@ -73,6 +75,8 @@ public class AnteFerrum {
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
 
+        AnteFerrumModEvents.register(modEventBus);
+        AnteFerrumGameEvents.register();
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
         GLOBAL_LOOT_MODIFIER_SERIALIZERS.register(modEventBus);
@@ -85,7 +89,7 @@ public class AnteFerrum {
         NeoForge.EVENT_BUS.register(this);
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
-        modEventBus.addListener(AnteFerrumEvents::gatherData);
+        modEventBus.addListener(AnteFerrumModEvents::gatherData);
 
         // Register our mod's ModConfigSpec so that FML can create and load the config file for us
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
