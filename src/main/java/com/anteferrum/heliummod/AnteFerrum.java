@@ -1,5 +1,6 @@
 package com.anteferrum.heliummod;
 
+import com.anteferrum.heliummod.blocks.ModBlocks;
 import com.anteferrum.heliummod.items.ModItems;
 import com.anteferrum.heliummod.loot.AddItemModifier;
 import com.anteferrum.heliummod.loot.ModLootModifiers;
@@ -73,6 +74,7 @@ public class AnteFerrum {
         modEventBus.addListener(this::commonSetup);
 
         ModItems.register(modEventBus);
+        ModBlocks.register(modEventBus);
         GLOBAL_LOOT_MODIFIER_SERIALIZERS.register(modEventBus);
         BLOCKS.register(modEventBus);
         ITEMS.register(modEventBus);
