@@ -5,13 +5,21 @@ import com.anteferrum.heliummod.items.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
+import net.neoforged.neoforge.items.IItemHandler;
+import net.neoforged.neoforge.transfer.item.ItemResource;
+import net.neoforged.neoforge.transfer.transaction.Transaction;
 
 // mod game bus
 // there are surprisingly 2 different event busses in neoforge, this class holding the game events, while the other holds mod events
@@ -43,6 +51,39 @@ public class AnteFerrumGameEvents {
                     SoundSource.BLOCKS, 0.2f, 1.0f,
                     level.getRandom().nextLong()
             );
+
+            if (level.random.nextFloat() <= 0.20f) {
+                level.setBlock(pos, ModBlocks.sharpened_flint.get().defaultBlockState(), 3);
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void rightClickBlock(PlayerInteractEvent.RightClickBlock event) {
+        Level level = event.getLevel();
+        BlockPos pos = event.getPos();
+        BlockState state = level.getBlockState(pos);
+
+        pickUpItem(level, state.getBlock(), pos, ModBlocks.flint.get(), ModItems.flint.toStack(), event);
+        pickUpItem(level, state.getBlock(), pos, ModBlocks.sharpened_flint.get(), ModItems.sharpened_flint.toStack(), event);
+    }
+
+    public static void pickUpItem(Level level, Block currentBlock, BlockPos currentBlockPos, Block targetBlock, ItemStack stack, PlayerInteractEvent.RightClickBlock event) {
+        Player player = event.getEntity();
+
+        if (currentBlock == targetBlock) {
+            Inventory inventory = player.getInventory();
+            int slot = inventory.getSelectedSlot();
+            if (player.getMainHandItem().isEmpty()) {
+                inventory.setItem(slot, stack);
+                level.setBlock(currentBlockPos, Blocks.AIR.defaultBlockState(), 3);
+            } else if (player.getMainHandItem().is(stack.getItem())) {
+                player.getMainHandItem().grow(1);
+                level.setBlock(currentBlockPos, Blocks.AIR.defaultBlockState(), 3);
+
+                event.setCancellationResult(InteractionResult.SUCCESS);
+                event.setCanceled(true);
+            }
         }
     }
 

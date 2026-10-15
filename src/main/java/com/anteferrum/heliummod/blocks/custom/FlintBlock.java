@@ -9,6 +9,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 // had to make this its own class cuz i wanted to resize the hitbox
 public class FlintBlock extends Block {
+    public FlintBlock(Properties p_49795_) {
         super(p_49795_);
     }
 

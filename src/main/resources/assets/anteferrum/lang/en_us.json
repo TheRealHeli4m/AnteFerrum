@@ -15,5 +15,6 @@
   "item.anteferrum.flint": "Flint",
   "item.anteferrum.pebble": "Pebble",
 
-  "block.anteferrum.flint": "Flint"
+  "block.anteferrum.flint": "Flint",
+  "block.anteferrum.sharpened_flint": "Sharpened Flint"
 }
