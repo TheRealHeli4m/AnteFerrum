@@ -1,6 +1,7 @@
 package com.anteferrum.heliummod;
 
 import com.anteferrum.heliummod.blocks.ModBlocks;
+import com.anteferrum.heliummod.entities.ModEntities;
 import com.anteferrum.heliummod.events.AnteFerrumGameEvents;
 import com.anteferrum.heliummod.events.AnteFerrumModEvents;
 import com.anteferrum.heliummod.items.ModItems;
@@ -62,6 +63,8 @@ public class AnteFerrum {
         AnteFerrumGameEvents.register();
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
+        ModEntities.register(modEventBus);
+        ENTITY_TYPES.register(modEventBus);
         GLOBAL_LOOT_MODIFIER_SERIALIZERS.register(modEventBus);
         BLOCKS.register(modEventBus);
         ITEMS.register(modEventBus);
@@ -72,6 +75,8 @@ public class AnteFerrum {
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
         modEventBus.addListener(AnteFerrumModEvents::gatherData);
+        modEventBus.addListener(AnteFerrumModEvents::registerEntityRenderers);
+        modEventBus.addListener(AnteFerrumModEvents::registerLayerDefinitions);
 
         // Register our mod's ModConfigSpec so that FML can create and load the config file for us
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
