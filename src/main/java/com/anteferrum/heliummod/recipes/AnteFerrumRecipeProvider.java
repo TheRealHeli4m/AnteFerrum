@@ -1,5 +1,6 @@
 package com.anteferrum.heliummod.recipes;
 
+import com.anteferrum.heliummod.items.ModItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
@@ -18,7 +19,10 @@ public class AnteFerrumRecipeProvider extends RecipeProvider {
 
     @Override
     protected void buildRecipes() {
-        ShapelessRecipeBuilder.shapeless(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.TOOLS, Items.STICK);
+        ShapelessRecipeBuilder.shapeless(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.TOOLS, ModItems.sharpened_stick.get())
+                .requires(Items.STICK)
+                .unlockedBy("has_stick", this.has(Items.STICK))
+                .save(this.output);
 
     }
 

@@ -15,8 +15,8 @@ import net.minecraft.world.phys.EntityHitResult;
 // potentially extend AbstractArrow instead
 // ill figure this out later when im done with the item summoning
 public class SharpenedStickEntity extends AbstractArrow implements ItemSupplier {
-    public SharpenedStickEntity(EntityType<? extends AbstractArrow> entityType, Level level) {
-        super(entityType, level);
+    public SharpenedStickEntity(EntityType<? extends AbstractArrow> p_479294_, Level p_479811_) {
+        super(p_479294_, p_479811_);
     }
 
     public SharpenedStickEntity(LivingEntity shooter, Level level) {

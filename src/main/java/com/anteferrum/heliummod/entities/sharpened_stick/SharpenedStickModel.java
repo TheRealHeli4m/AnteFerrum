@@ -1,6 +1,8 @@
 package com.anteferrum.heliummod.entities.sharpened_stick;
 
 import com.anteferrum.heliummod.AnteFerrum;
+import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
@@ -11,7 +13,7 @@ import net.minecraft.world.entity.Entity;
 
 public class SharpenedStickModel<T extends Entity> extends EntityModel<SharpenedStickEntityRenderState> {
     // This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
-    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(Identifier.fromNamespaceAndPath(AnteFerrum.MODID, "sharpened_stick"), "main");
+    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(Identifier.fromNamespaceAndPath("modid", "sharpened_stick"), "main");
     private final ModelPart root;
 
     public SharpenedStickModel(ModelPart root) {
@@ -35,7 +37,7 @@ public class SharpenedStickModel<T extends Entity> extends EntityModel<Sharpened
                 .texOffs(16, 0).addBox(3.0F, -1.0F, 2.0F, 1.0F, 1.0F, 3.0F, new CubeDeformation(0.0F))
                 .texOffs(16, 4).addBox(4.0F, -1.0F, 3.0F, 1.0F, 1.0F, 3.0F, new CubeDeformation(0.0F))
                 .texOffs(16, 8).addBox(5.0F, -1.0F, 4.0F, 1.0F, 1.0F, 2.0F, new CubeDeformation(0.0F))
-                .texOffs(8, 4).addBox(-3.0F, -1.0F, -4.0F, 1.0F, 1.0F, 3.0F, new CubeDeformation(0.0F)), PartPose.offset(1.0F, 24.0F, 1.0F));
+                .texOffs(8, 4).addBox(-3.0F, -1.0F, -4.0F, 1.0F, 1.0F, 3.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, 24.0F, 0.0F, 0.0F, 3.1416F, 0.0F));
 
         return LayerDefinition.create(meshdefinition, 32, 32);
     }
@@ -43,5 +45,9 @@ public class SharpenedStickModel<T extends Entity> extends EntityModel<Sharpened
     @Override
     public void setupAnim(SharpenedStickEntityRenderState state) {
         super.setupAnim(state);
+
+        // hardcoded this part cuz i cant figure out why the model is angled so weirdly
+        this.root.yRot = (float) Math.toRadians(state.yaw - 180F) - (float) Math.toRadians(45.0F);
+        this.root.xRot = (float) Math.toRadians(state.pitch);
     }
 }

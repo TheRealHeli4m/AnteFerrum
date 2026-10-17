@@ -19,6 +19,7 @@ public class SharpenedStick extends Item {
     public SharpenedStick(Properties properties) {
         super(properties);
     }
+    private int pickUpWait = 20;
 
     // apparently this needs to be shut down for releaseUsing to work properly
     @Override
@@ -53,6 +54,10 @@ public class SharpenedStick extends Item {
             // this part was edited cuz running SharpenedStickEntity::new is broken for some reason?
             // following Kaupenjoes code here
             SharpenedStickEntity sharpenedStick = new SharpenedStickEntity(player, level);
+            sharpenedStick.setXRot(player.getXRot());
+            sharpenedStick.setYRot(player.getYRot());
+            sharpenedStick.xRotO = player.getXRot();
+            sharpenedStick.yRotO = player.getYRot();
             sharpenedStick.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0f, 2.5f, 1.0f);
             level.addFreshEntity(sharpenedStick);
             level.playSound(null, sharpenedStick, SoundEvents.SNOWBALL_THROW, SoundSource.PLAYERS, 1.0f, 1.0f);

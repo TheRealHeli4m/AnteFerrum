@@ -9,7 +9,7 @@ import net.neoforged.bus.api.IEventBus;
 import java.util.function.Supplier;
 
 public class ModEntities {
-    public static final Supplier<EntityType<SharpenedStickEntity>> SHARPENED_STICK_ENTITY = AnteFerrum.ENTITY_TYPES.registerEntityType("sharpened_stick_entity", SharpenedStickEntity::new, MobCategory.MISC);
+    public static final Supplier<EntityType<SharpenedStickEntity>> SHARPENED_STICK_ENTITY = AnteFerrum.ENTITY_TYPES.registerEntityType("sharpened_stick_entity", SharpenedStickEntity::new, MobCategory.MISC, sharpenedStickEntityBuilder -> sharpenedStickEntityBuilder.sized(0.5f, 0.5f));
 
     public static void register(IEventBus eventBus) { }
 }
