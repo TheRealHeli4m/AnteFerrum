@@ -1,9 +1,13 @@
-package com.anteferrum.heliummod;
+package com.anteferrum.heliummod.recipes;
 
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
+import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
+import net.minecraft.data.recipes.ShapelessRecipeBuilder;
+import net.minecraft.world.item.Items;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -14,6 +18,7 @@ public class AnteFerrumRecipeProvider extends RecipeProvider {
 
     @Override
     protected void buildRecipes() {
+        ShapelessRecipeBuilder.shapeless(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.TOOLS, Items.STICK);
 
     }
 

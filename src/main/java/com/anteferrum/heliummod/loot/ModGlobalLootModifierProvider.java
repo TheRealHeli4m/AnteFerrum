@@ -4,6 +4,7 @@ import com.anteferrum.heliummod.AnteFerrum;
 import com.anteferrum.heliummod.items.ModItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
@@ -25,6 +26,14 @@ public class ModGlobalLootModifierProvider extends GlobalLootModifierProvider {
     // conditions can be viewed by seeing the hierarchy (ctrl + h) of LootItemCondition, though most of them are easy enough to understand
     @Override
     protected void start() {
+        // sticks
+        this.add("more_sticks",
+                new AddItemModifier(new LootItemCondition[]{
+                        LootItemBlockStatePropertyCondition.hasBlockStateProperties(Blocks.OAK_LEAVES).build(),
+                        LootItemRandomChanceCondition.randomChance(0.5f).build()
+                }, Items.STICK));
+
+        // flint and gravel
         this.add("custom_flint_to_gravel",
                 new AddItemModifier(new LootItemCondition[]{
                         LootItemBlockStatePropertyCondition.hasBlockStateProperties(Blocks.GRAVEL).build(),

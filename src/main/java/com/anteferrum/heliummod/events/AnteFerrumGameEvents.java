@@ -54,6 +54,12 @@ public class AnteFerrumGameEvents {
 
             if (level.random.nextFloat() <= 0.20f) {
                 level.setBlock(pos, ModBlocks.sharpened_flint.get().defaultBlockState(), 3);
+
+                level.playSeededSound(null, pos.getX(), pos.getY(), pos.getZ(),
+                        SoundEvents.AMETHYST_BLOCK_BREAK,
+                        SoundSource.BLOCKS, 0.1f, 0.5f,
+                        level.getRandom().nextLong()
+                );
             }
         }
     }
@@ -77,12 +83,21 @@ public class AnteFerrumGameEvents {
             if (player.getMainHandItem().isEmpty()) {
                 inventory.setItem(slot, stack);
                 level.setBlock(currentBlockPos, Blocks.AIR.defaultBlockState(), 3);
+
+                level.playSeededSound(null, currentBlockPos.getX(), currentBlockPos.getY(), currentBlockPos.getZ(), SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS, 0.2f, 0.8f, level.getRandom().nextLong());
+                level.playSeededSound(null, currentBlockPos.getX(), currentBlockPos.getY(), currentBlockPos.getZ(), SoundEvents.GRASS_STEP, SoundSource.BLOCKS, 0.2f, 1f, level.getRandom().nextLong());
+
+
+
             } else if (player.getMainHandItem().is(stack.getItem())) {
                 player.getMainHandItem().grow(1);
                 level.setBlock(currentBlockPos, Blocks.AIR.defaultBlockState(), 3);
 
                 event.setCancellationResult(InteractionResult.SUCCESS);
                 event.setCanceled(true);
+
+                level.playSeededSound(null, currentBlockPos.getX(), currentBlockPos.getY(), currentBlockPos.getZ(), SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS, 0.2f, 0.8f, level.getRandom().nextLong());
+                level.playSeededSound(null, currentBlockPos.getX(), currentBlockPos.getY(), currentBlockPos.getZ(), SoundEvents.GRASS_STEP, SoundSource.BLOCKS, 0.2f, 1f, level.getRandom().nextLong());
             }
         }
     }

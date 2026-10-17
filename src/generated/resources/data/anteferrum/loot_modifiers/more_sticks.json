@@ -1,0 +1,14 @@
+{
+  "type": "anteferrum:add_item_modifier",
+  "conditions": [
+    {
+      "block": "minecraft:oak_leaves",
+      "condition": "minecraft:block_state_property"
+    },
+    {
+      "chance": 0.5,
+      "condition": "minecraft:random_chance"
+    }
+  ],
+  "item": "minecraft:stick"
+}

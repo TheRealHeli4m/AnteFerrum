@@ -1,6 +1,6 @@
 package com.anteferrum.heliummod.events;
 
-import com.anteferrum.heliummod.AnteFerrumRecipeProvider;
+import com.anteferrum.heliummod.recipes.AnteFerrumRecipeProvider;
 import com.anteferrum.heliummod.loot.ModGlobalLootModifierProvider;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
