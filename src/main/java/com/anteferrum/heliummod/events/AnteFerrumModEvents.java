@@ -21,13 +21,13 @@ public class AnteFerrumModEvents {
     }
 
     @SubscribeEvent
-    public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
-        event.registerEntityRenderer(ModEntities.SHARPENED_STICK_ENTITY.get(), SharpenedStickRenderer::new);
+    public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
+        event.registerLayerDefinition(SharpenedStickModel.LAYER_LOCATION, SharpenedStickModel::createBodyLayer);
     }
 
     @SubscribeEvent
-    public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
-        event.registerLayerDefinition(SharpenedStickModel.LAYER_LOCATION, SharpenedStickModel::createBodyLayer);
+    public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
+        event.registerEntityRenderer(ModEntities.SHARPENED_STICK_ENTITY.get(), context -> new SharpenedStickRenderer(context));
     }
 
     public static void register(IEventBus bus) { };

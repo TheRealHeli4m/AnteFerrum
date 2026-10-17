@@ -39,7 +39,6 @@ public class SharpenedStick extends Item {
     // copied from TridentItem class in minecraft's source code
     @Override
     public boolean releaseUsing(ItemStack stack, Level level, LivingEntity entity, int timeLeft) {
-        AnteFerrum.LOGGER.info("shoot");
         if (!(entity instanceof Player player)) { return false; };
 
         int requiredUseDuration = getUseDuration(stack, player) - timeLeft;
