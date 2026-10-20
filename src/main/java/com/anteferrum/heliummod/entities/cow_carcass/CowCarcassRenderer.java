@@ -31,11 +31,10 @@ public class CowCarcassRenderer extends EntityRenderer<CowCarcassEntity, CowCarc
     @Override
     public void submit(CowCarcassEntityRenderState renderState, PoseStack poseStack, SubmitNodeCollector collector, CameraRenderState cameraState) {
         poseStack.pushPose();
-        poseStack.translate(0.0f, -1.25f, 0.0f);
+        poseStack.translate(0.0f, -0.75f, 0.0f);
         super.submit(renderState, poseStack, collector, cameraState);
 
-        collector
-                .submitModel(this.model, renderState, poseStack, RenderTypes.entityCutout(Identifier.fromNamespaceAndPath(AnteFerrum.MODID, "textures/entity/cow.png")), renderState.lightCoords, OverlayTexture.NO_OVERLAY, 0, null);
+        collector.submitModel(this.model, renderState, poseStack, RenderTypes.entityCutout(Identifier.fromNamespaceAndPath(AnteFerrum.MODID, "textures/entity/cow.png")), renderState.lightCoords, OverlayTexture.NO_OVERLAY, 0, null);
 
         poseStack.popPose();
     }

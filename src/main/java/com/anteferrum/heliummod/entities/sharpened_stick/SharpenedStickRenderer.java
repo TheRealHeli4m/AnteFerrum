@@ -36,7 +36,7 @@ public class SharpenedStickRenderer extends EntityRenderer<SharpenedStickEntity,
     @Override
     public void submit(SharpenedStickEntityRenderState state, PoseStack poseStack, SubmitNodeCollector collector, CameraRenderState cameraRenderState) {
         poseStack.pushPose();
-        poseStack.translate(0.0f, -1.25f, 0.0f);
+        poseStack.translate(0.0f, -1.5f, 0.0f);
         super.submit(state, poseStack, collector, cameraRenderState);
 
         collector

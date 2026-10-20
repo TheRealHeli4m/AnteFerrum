@@ -9,28 +9,21 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
 
+// i still dont fully understand how the entity registering system works
 public class CowCarcassEntity extends Entity {
     public CowCarcassEntity(EntityType<?> entityType, Level level) {
         super(entityType, level);
     }
 
     @Override
-    protected void defineSynchedData(SynchedEntityData.Builder builder) {
-
-    }
+    protected void defineSynchedData(SynchedEntityData.Builder builder) { }
 
     @Override
-    public boolean hurtServer(ServerLevel serverLevel, DamageSource damageSource, float v) {
-        return false;
-    }
+    public boolean hurtServer(ServerLevel serverLevel, DamageSource damageSource, float v) { return false; }
 
     @Override
-    protected void readAdditionalSaveData(ValueInput valueInput) {
-
-    }
+    protected void readAdditionalSaveData(ValueInput valueInput) { }
 
     @Override
-    protected void addAdditionalSaveData(ValueOutput valueOutput) {
-
-    }
+    protected void addAdditionalSaveData(ValueOutput valueOutput) { }
 }

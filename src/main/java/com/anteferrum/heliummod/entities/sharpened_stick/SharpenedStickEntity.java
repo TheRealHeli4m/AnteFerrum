@@ -15,16 +15,15 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 
-// potentially extend AbstractArrow instead
-// ill figure this out later when im done with the item summoning
+// i did end up using AbstractArrow
 public class SharpenedStickEntity extends AbstractArrow implements ItemSupplier {
     public SharpenedStickEntity(EntityType<? extends AbstractArrow> p_479294_, Level p_479811_) {
         super(p_479294_, p_479811_);
-    }
+    } // default constructor for registering
 
     public SharpenedStickEntity(LivingEntity shooter, Level level) {
         super(ModEntities.SHARPENED_STICK_ENTITY.get(), shooter, level, new ItemStack(ModItems.sharpened_stick.get()), null);
-    }
+    } // custom constructor for spawning
 
     @Override
     protected ItemStack getDefaultPickupItem() {
@@ -33,7 +32,7 @@ public class SharpenedStickEntity extends AbstractArrow implements ItemSupplier 
 
     @Override
     protected void onHitEntity(EntityHitResult result) {
-        super.onHitEntity(result); // runs onHitEntity of the PARENT CLASS??
+        super.onHitEntity(result);
         Entity entity = result.getEntity();
         entity.hurt(this.damageSources().thrown(this, this.getOwner()), 4);
 

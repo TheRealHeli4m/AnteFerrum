@@ -1,11 +1,16 @@
 package com.anteferrum.heliummod.events;
 
+import com.anteferrum.heliummod.AnteFerrum;
 import com.anteferrum.heliummod.blocks.ModBlocks;
+import com.anteferrum.heliummod.entities.ModEntities;
+import com.anteferrum.heliummod.entities.cow_carcass.CowCarcassEntity;
 import com.anteferrum.heliummod.items.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.animal.cow.Cow;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.Slot;
@@ -16,8 +21,10 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
+import net.neoforged.neoforge.event.entity.living.LivingEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
-import net.neoforged.neoforge.items.IItemHandler;
+import net.neoforged.neoforge.event.tick.EntityTickEvent;
 import net.neoforged.neoforge.transfer.item.ItemResource;
 import net.neoforged.neoforge.transfer.transaction.Transaction;
 
@@ -26,6 +33,22 @@ import net.neoforged.neoforge.transfer.transaction.Transaction;
 // can simply hit cmd + click on the event to check what type of event it is
 // most mod events would implement a modbusevent of some sort, while game events dont
 public class AnteFerrumGameEvents {
+    // was using LivingDeathEvent before but i need to account for the cow's death animation to make it not weird
+    @SubscribeEvent
+    public static void spawnCowCarcass(EntityTickEvent.Post event) { // cant call EntityTickEvent itself, but either Pre or Post (so before or after everything loads within a tick)
+        if (!(event.getEntity() instanceof Cow cow && cow.isDeadOrDying())) { return; }
+        Level level = cow.level();
+
+        if (level.isClientSide()) { return; }
+
+        if (cow.deathTime == 19) {
+            BlockPos pos = cow.getOnPos();
+            CowCarcassEntity cowCarcassEntity = new CowCarcassEntity(ModEntities.COW_CARCASS_ENTITY.get(), level);
+            cowCarcassEntity.setPos(pos.getX(), pos.getY() + 1, pos.getZ());
+            level.addFreshEntity(cowCarcassEntity);
+        }
+    }
+
     @SubscribeEvent
     public static void leftClickBlock(PlayerInteractEvent.LeftClickBlock event) {
         Level level = event.getLevel();
