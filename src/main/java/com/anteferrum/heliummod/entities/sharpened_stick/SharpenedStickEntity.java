@@ -2,6 +2,9 @@ package com.anteferrum.heliummod.entities.sharpened_stick;
 
 import com.anteferrum.heliummod.entities.ModEntities;
 import com.anteferrum.heliummod.items.ModItems;
+import net.minecraft.client.resources.sounds.Sound;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -47,5 +50,10 @@ public class SharpenedStickEntity extends AbstractArrow implements ItemSupplier 
     @Override
     public ItemStack getItem() {
         return new ItemStack(ModItems.sharpened_stick.get());
+    }
+
+    @Override
+    protected SoundEvent getDefaultHitGroundSoundEvent() {
+        return SoundEvents.GENERIC_BIG_FALL;
     }
 }

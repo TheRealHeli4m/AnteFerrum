@@ -2,11 +2,16 @@ package com.anteferrum.heliummod.items.custom;
 
 import com.anteferrum.heliummod.AnteFerrum;
 import com.anteferrum.heliummod.entities.sharpened_stick.SharpenedStickEntity;
+import com.mojang.blaze3d.vertex.PoseStack;
+import net.minecraft.client.player.LocalPlayer;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.HumanoidArm;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -60,7 +65,7 @@ public class SharpenedStick extends Item {
             sharpenedStick.yRotO = player.getYRot();
             sharpenedStick.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0f, 2.5f, 1.0f);
             level.addFreshEntity(sharpenedStick);
-            level.playSound(null, sharpenedStick, SoundEvents.SNOWBALL_THROW, SoundSource.PLAYERS, 1.0f, 1.0f);
+            level.playSound(null, sharpenedStick, SoundEvents.TRIDENT_THROW.value(), SoundSource.PLAYERS, 1.0f, 1.0f);
             return true;
         }
         return false;
