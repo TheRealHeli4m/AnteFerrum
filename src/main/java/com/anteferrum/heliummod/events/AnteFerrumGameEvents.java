@@ -62,7 +62,7 @@ public class AnteFerrumGameEvents {
 
         Player player = event.getEntity();
 
-        if (state.getBlock() == ModBlocks.flint.get() && player.getMainHandItem().is(ModItems.pebble)) {
+        if (state.getBlock() == ModBlocks.flint.get() && player.getMainHandItem().is(ModItems.pebble) && !player.getCooldowns().isOnCooldown(ModItems.pebble.toStack())) {
             level.playSeededSound(null, pos.getX(), pos.getY(), pos.getZ(),
                     SoundEvents.STONE_BREAK,
                     SoundSource.BLOCKS, 2.0f, 1.0f,
@@ -84,6 +84,8 @@ public class AnteFerrumGameEvents {
                         level.getRandom().nextLong()
                 );
             }
+
+            player.getCooldowns().addCooldown(ModItems.pebble.toStack(), 10);
         }
     }
 
