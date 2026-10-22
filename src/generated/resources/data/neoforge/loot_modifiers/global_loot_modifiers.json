@@ -1,10 +1,21 @@
 {
   "entries": [
-    "anteferrum:more_sticks",
+    "anteferrum:no_beef",
+    "anteferrum:no_leather",
     "anteferrum:custom_flint_to_gravel",
     "anteferrum:pebble_to_gravel",
     "anteferrum:remove_flint_from_gravel",
-    "anteferrum:remove_gravel_from_gravel"
+    "anteferrum:remove_gravel_from_gravel",
+    "anteferrum:more_sticks_oak",
+    "anteferrum:more_sticks_birch",
+    "anteferrum:more_sticks_spruce",
+    "anteferrum:more_sticks_dark",
+    "anteferrum:more_sticks_acacia",
+    "anteferrum:more_sticks_azelea",
+    "anteferrum:more_sticks_cherry",
+    "anteferrum:more_sticks_jungle",
+    "anteferrum:more_sticks_mangrove",
+    "anteferrum:more_sticks_pale"
   ],
   "replace": false
 }

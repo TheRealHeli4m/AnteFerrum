@@ -21,6 +21,7 @@ public class ModItems {
     public static final DeferredItem<BlockItem> sharpened_flint = AnteFerrum.ITEMS.registerSimpleBlockItem("sharpened_flint", ModBlocks.sharpened_flint, props -> props);
     public static final DeferredItem<BlockItem> flint = AnteFerrum.ITEMS.registerSimpleBlockItem("flint", ModBlocks.flint, props -> props);
     public static final DeferredItem<Item> pebble = AnteFerrum.ITEMS.registerItem("pebble", Item::new, props -> props);
+    public static final DeferredItem<Item> animal_sinew = AnteFerrum.ITEMS.registerItem("animal_sinew", Item::new, props -> props);
 
     public static final DeferredItem<Item> sharpened_stick = AnteFerrum.ITEMS.registerItem("sharpened_stick", SharpenedStick::new);
 

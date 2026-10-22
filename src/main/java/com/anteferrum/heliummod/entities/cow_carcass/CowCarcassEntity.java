@@ -53,8 +53,12 @@ public class CowCarcassEntity extends Entity {
             ItemEntity meat = new ItemEntity(level, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(Items.BEEF));
             meat.setDeltaMovement(level.random.nextGaussian() * 0.05, level.random.nextGaussian() * 0.05 + 0.2, level.random.nextGaussian() * 0.05);
 
+            ItemEntity sinew = new ItemEntity(level, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(ModItems.animal_sinew.get()));
+            meat.setDeltaMovement(level.random.nextGaussian() * 0.05, level.random.nextGaussian() * 0.05 + 0.2, level.random.nextGaussian() * 0.05);
+
             level.addFreshEntity(meat);
             level.addFreshEntity(leather);
+            level.addFreshEntity(sinew);
 
             player.getCooldowns().addCooldown(ModItems.sharpened_flint.toStack(), 10);
             this.getEntityData().set(HARVEST_COUNT, data - 1);
