@@ -22,8 +22,9 @@ public class ModItems {
     public static final DeferredItem<BlockItem> flint = AnteFerrum.ITEMS.registerSimpleBlockItem("flint", ModBlocks.flint, props -> props);
     public static final DeferredItem<Item> pebble = AnteFerrum.ITEMS.registerItem("pebble", Item::new, props -> props);
     public static final DeferredItem<Item> animal_sinew = AnteFerrum.ITEMS.registerItem("animal_sinew", Item::new, props -> props);
+    public static final DeferredItem<Item> fire_drill = AnteFerrum.ITEMS.registerItem("fire_drill", Item::new, props -> props);
 
-    public static final DeferredItem<Item> sharpened_stick = AnteFerrum.ITEMS.registerItem("sharpened_stick", SharpenedStick::new);
+    public static final DeferredItem<Item> sharpened_stick = AnteFerrum.ITEMS.registerItem("sharpened_stick", SharpenedStick::new, properties -> new Item.Properties().stacksTo(1));
 
     // empty function to register this class -> allowing for items to be added
     public static void register(IEventBus eventBus) { }

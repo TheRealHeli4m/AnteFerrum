@@ -4,10 +4,7 @@ import com.anteferrum.heliummod.items.ModItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.recipes.RecipeCategory;
-import net.minecraft.data.recipes.RecipeOutput;
-import net.minecraft.data.recipes.RecipeProvider;
-import net.minecraft.data.recipes.ShapelessRecipeBuilder;
+import net.minecraft.data.recipes.*;
 import net.minecraft.world.item.Items;
 
 import java.util.concurrent.CompletableFuture;
@@ -24,6 +21,13 @@ public class AnteFerrumRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_stick", this.has(Items.STICK))
                 .save(this.output);
 
+        ShapedRecipeBuilder.shaped(this.registries.lookupOrThrow(Registries.ITEM), RecipeCategory.TOOLS, ModItems.fire_drill.get())
+                .pattern("XS ")
+                .pattern("S  ")
+                .define('X', ModItems.animal_sinew)
+                .define('S', Items.STICK)
+                .unlockedBy("has_animal_sinew", this.has(ModItems.animal_sinew))
+                .save(this.output);
     }
 
     public static class Runner extends RecipeProvider.Runner {
